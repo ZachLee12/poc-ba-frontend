@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
-
+import { Button } from "react-bootstrap"
+import { Accordion } from "react-bootstrap"
 
 const TokenForm = () => {
     const [token, setToken] = useState('')
@@ -24,13 +25,14 @@ const TokenForm = () => {
     return (
         <div id="TokenForm">
             <h1>Form</h1>
-            <form onSubmit={handleSubmit}>
+
+            <form>
                 <label htmlFor="token">
                     Token:
                     <input onChange={handleChange} type="text" />
                 </label>
 
-                <button className="submit-btn">Submit</button>
+                <Button onClick={handleSubmit} variant="primary">Submit</Button>
             </form>
 
             <h1>Server Response (CoP):</h1>
