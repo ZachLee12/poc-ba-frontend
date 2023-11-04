@@ -1,0 +1,11 @@
+#LoginForm_card {
+    padding: 20px;
+    margin: auto;
+    max-width: 500px;
+}
+
+.LoginForm_form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
