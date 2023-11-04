@@ -1,3 +1,32 @@
-.server-response {
-    color: red;
+.TokenForm_form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px;
+}
+
+.TokenForm_label {
+    display: flex;
+    gap: 30px;
+}
+
+.TokenForm_label>input {
+    flex-grow: 1;
+}
+
+.TokenForm_submit-btn {
+    max-width: 150px;
+}
+
+.TokenForm_server-alert {
+    margin: 30px 20px;
+}
+
+.TokenForm_server-res {
+    font-size: larger;
+}
+
+.TokenForm_server-res-title {
+    font-size: medium;
+    font-weight: 600;
 }

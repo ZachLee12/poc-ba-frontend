@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { Button, Card, Alert } from "react-bootstrap"
+import './TokenForm.css'
 
 const TokenForm = () => {
     const [token, setToken] = useState('')
@@ -34,23 +35,21 @@ const TokenForm = () => {
     }
 
     return (
-        <div id="TokenForm">
-            <h1>Form</h1>
-
-            <form>
-                <label htmlFor="token">
-                    Token:
+        <Card id="TokenForm">
+            <form className="TokenForm_form">
+                <label htmlFor="token" className="TokenForm_label">
+                    <div className="TokenForm_label-text">Token:</div>
                     <input onChange={handleChange} type="text" />
                 </label>
 
-                <Button onClick={handleSubmit} variant="primary">Submit</Button>
+                <Button className="TokenForm_submit-btn" onClick={handleSubmit} variant="primary">Submit</Button>
             </form>
 
-            <Alert variant={alertVariant}>
-                Server Response (eg: CoP): {serverResponse.toUpperCase()}
+            <Alert variant={alertVariant} className="TokenForm_server-alert">
+                <div className="TokenForm_server-res-title">Server Response</div>
+                <div className="TokenForm_server-res">{serverResponse.toUpperCase()}</div>
             </Alert>
-
-        </div>
+        </Card>
     )
 }
 
