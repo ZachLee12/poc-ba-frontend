@@ -1,21 +1,32 @@
 import { useEffect, useState } from "react"
-import { Button } from "react-bootstrap"
-import { Accordion } from "react-bootstrap"
+import { Button, Card, Alert } from "react-bootstrap"
 
 const TokenForm = () => {
     const [token, setToken] = useState('')
-    const [serverResponse, setServerResponse] = useState('')
+    const [serverResponse, setServerResponse] = useState('none')
+    const [alertVariant, setAlertVariant] = useState('info')
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         setServerResponse('Loading...')
-        const { data } = await (await fetch('http://localhost:5000/protected', {
+        const response = await fetch('http://localhost:5000/protected', {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             }
-        })).json()
+        })
+        const { data } = await response.json()
+        const alertVariant = mapResponseStatus(response.status)
+        setAlertVariant(alertVariant)
         setServerResponse(data)
+    }
+
+    const mapResponseStatus = (responseStatus) => {
+        if (responseStatus !== 200) {
+            return 'danger'
+        } else {
+            return 'success'
+        }
     }
 
     const handleChange = (e) => {
@@ -35,8 +46,10 @@ const TokenForm = () => {
                 <Button onClick={handleSubmit} variant="primary">Submit</Button>
             </form>
 
-            <h1>Server Response (CoP):</h1>
-            <h2>{serverResponse} </h2>
+            <Alert variant={alertVariant}>
+                Server Response (eg: CoP): {serverResponse.toUpperCase()}
+            </Alert>
+
         </div>
     )
 }
