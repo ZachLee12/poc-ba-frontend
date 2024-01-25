@@ -24,7 +24,7 @@ const TokenForm = () => {
 
     const mapResponseStatus = (responseStatus, data) => {
         //just a quick way for now, to return a "warning" variant
-        if (data === 'invalid signature') {
+        if (data.includes('expired')) {
             return "warning"
         }
 

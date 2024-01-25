@@ -32,7 +32,7 @@ const LoginForm = () => {
             <Form className="LoginForm_form" >
                 <Form.Group>
                     <Form.Label>Username</Form.Label>
-                    <Form.Control type="text" onChange={handleChange} name="username" value={formData.username} />
+                    <Form.Control autoComplete="off" type="text" onChange={handleChange} name="username" value={formData.username} />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Password</Form.Label>
